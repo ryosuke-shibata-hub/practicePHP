@@ -2,7 +2,7 @@ version: '3.7'
 services:
   web:
     build: .
-    container_name: "php74-1"
+    container_name: "php8.2"
     volumes:
       - "./html/:/var/www/html"
     privileged: true
