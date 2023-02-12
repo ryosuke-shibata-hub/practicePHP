@@ -526,30 +526,317 @@
     // PHP で Cookie を作成する
     // setcookie(name, value, expire, path, domain, secure, httponly);
 
-    $cookie_name = "user";
-    $cookoe_value = "John Doe";
-    setcookie($cookie_name,$cookoe_value, time() + (86400 * 30), "/")//86400 = 1日　× 30日
+    // $cookie_name = "user";
+    // $cookoe_value = "John Doe";
+    // setcookie($cookie_name,$cookoe_value, time() + (86400 * 30), "/");//86400 = 1日　× 30日
 
     //Cookie を変更するには、次のsetcookie()関数を使用して Cookie を (再度) 設定します
     // Cookie を削除するには、setcookie()過去の有効期限を指定して関数を使用します。
     // setcookie("user", "", time() - 3600);
+
+    // PHPセッション
+    // session_start();
+
+
+
+
+
+
+
 ?>
 <html>
+<style>
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 5px;
+}
+</style>
 <body>
   <?php
-    //Cookie が有効になっているかどうかを確認する
-    if(count($_COOKIE) > 0) {
-    echo "Cookies are enabled.";
-    } else {
-    echo "Cookies are disabled.";
+    // //Cookie が有効になっているかどうかを確認する
+    // if(count($_COOKIE) > 0) {
+    // echo "Cookies are enabled.";
+    // } else {
+    // echo "Cookies are disabled.";
+    // }
+    // echo "<br>";
+    // if (!isset($_COOKIE[$cookie_name])) {
+    //     echo "Coookie named '" . $cookie_name . "'is not set!";
+    // } else {
+    //     echo "Coookie '" . $cookie_name . "' is set!<br>";
+    //     echo "value is: " . $_COOKIE[$cookie_name];
+    // }
+    // echo "<br>";
+    // //sessionをセットする
+    // $_SESSION["favcolor"] = "Green";
+    // $_SESSION["favanimal"] = "Cat";
+    // echo "Session variables are set";
+    //     echo "<br>";
+    // // PHPフィルタ アドバンスト
+    // //変数がINT型で1から200の間か確認する
+    // $int = 122;
+    // $min = 1;
+    // $max = 200;
+
+    // if (filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range" => $max))) === false) {
+    //     echo ("Variable value is not within the legal range");
+    // } else {
+    //     echo("Variable value is within the legal range");
+    // }
+    // // 変数 $ip が有効な IPv6 アドレスであるかどうかを確認
+    // $ip = "2001:0db8:85a3:08d3:1319:8a2e:0370:7334";
+    // if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {
+    //     echo ("$ip is a valid IPv6 address");
+    // } else {
+    //     echo ("$ip is  not a valid IPv6 address");
+    // }
+
+    // // 変数 $url がクエリ文字列を含む URL であるかどうかを確認します。
+    // $url = "https://www.w3schools.com";
+
+    // if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED) === false) {
+    // echo("$url is a valid URL with a query string");
+    // } else {
+    // echo("$url is not a valid URL with a query string");
+    // }
+
+    // // 文字列をサニタイズします。すべての HTML タグと、ASCII 値が 127 を超えるすべての文字を文字列から削除
+    // $str = "<h1>Hello WorldÆØÅ!</h1>";
+    // $newstr = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGHT);
+    // echo $newstr;
+
+    //PHPコールバック関数
+    //配列内の全ての文字列の長さを計算
+    // function my_callback($item)
+    // {
+    //     return strlen($item);
+    // }
+
+    // $strings = ["apple", "orange", "banana", "coconut"];
+    // $length = array_map("my_callback",$strings);
+    // print_r($length);
+    // echo "<br>";
+    // //PHP7以降は下の書き方もできる
+    // $strings = ["apple", "orange", "banana", "coconut"];
+    // $lengths = array_map( function($item) { return strlen($item); } , $strings);
+    // print_r($lengths);
+    // echo "<br>";
+    // // ユーザー定義関数のコールバック
+    // // ユーザー定義の関数とメソッドは、引数としてコールバック関数を取ることもできます。ユーザー定義の関数またはメソッド内でコールバック関数を使用するには、変数に括弧を追加して呼び出し、通常の関数と同様に引数を渡します。
+    // function exclaim($str)
+    // {
+    //     return $str . "!";
+    // }
+
+    // function ask($str)
+    // {
+    //     return $str . "?";
+    // }
+    // //$formatコールバック関数の呼び出し
+    // function printFormatted($str, $format)
+    // {
+    //     echo $format($str);
+    // }
+
+    // printFormatted("Hello world", "exclaim");
+    // printFormatted("Hello world", "ask");
+
+    // PHPとJSON
+    // PHP - json_encode()
+    //Jsonをエンコードする
+    // $age = array("Peter"=>35, "Ben"=>37, "Joe"=>43);
+    // echo json_encode($age);
+    // echo "<br>";
+    // $cars = array("Volvo", "BMW", "Toyota");
+    // echo json_encode($cars);
+    // echo "<br>";
+    // // PHP - json_decode()
+    // //jsonをデコード
+    // $jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
+    // var_dump(json_decode($jsonobj));
+    // echo "<br>";
+    // // json_decode ()関数は、デフォルトでオブジェクトを返します。json_decode ()関数には 2 番目のパラメーターがあり、true に設定すると、JSON オブジェクトは連想配列にデコードされます。
+    // $jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
+    // var_dump(json_decode($jsonobj,true));
+    // echo "<br>";
+    // // PHP - デコードされた値へのアクセス
+    // // オブジェクトと連想配列からデコードされた値にアクセスする方法
+    // $jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
+    // $obj = json_decode($jsonobj);
+    // echo $obj->Peter;
+    // echo $obj->Ben;
+    // echo $obj->Joe;
+
+    // echo "<br>";
+    // $jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
+    // $arr = json_decode($jsonobj, true);
+    // echo $arr["Peter"];
+    // echo $arr["Ben"];
+    // echo $arr["Joe"];
+    // echo "<br>";
+
+    // // PHP - 値のループ
+    // $jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
+    // $obj = json_decode($jsonobj);
+
+    // foreach ($obj as $key => $value) {
+    //     echo $key . "=>" . $value . "<br>";
+    // }
+
+    // $jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
+    // $arr = json_decode($jsonobj, true);
+
+    // foreach($arr as $key => $value) {
+    // echo $key . " => " . $value . "<br>";
+    // }
+
+    //PHPの例外
+    // 例外のスロー
+    // function divide($dividend, $divisor)
+    // {
+    //     if ($divisor == 0) {
+    //         throw new Exception("Division by zero");
+    //     }
+    //     return $dividend;
+    // }
+
+    // echo divide(5, 0);
+
+    //try catchで例外を処理する
+    // function divided($dividend, $divisor)
+    // {
+    //     if ($divisor == 0) {
+    //         throw new Exception("Division by zero");
+    //     }
+    //     return $dividend;
+    // }
+    // try {
+    //     echo divided(5, 0);
+    // } catch (Exception $e) {
+    //     echo "unable to divide.";
+    // }
+
+    // このtry...catch...finallyステートメントは、例外をキャッチするために使用できます。finally例外がキャッチされたかどうかに関係なく、ブロック内のコードは 常に実行されます。が存在する場合 finally、catchブロックはオプションです。
+    // function divide($dividend, $divisor) {
+    // if($divisor == 0) {
+    //     throw new Exception("Division by zero");
+    // }
+    // return $dividend / $divisor;
+    // }
+
+    // try {
+    // echo divide(5, 0);
+    // } catch(Exception $e) {
+    // echo "Unable to divide. ";
+    // } finally {
+    // echo "Process complete.";
+    // }
+
+    //finallyは例外がキャッチされなかった場合でも文字列を出力します。
+    // function divide($dividend, $divisor) {
+    //     if($divisor == 0) {
+    //         throw new Exception("Division by zero");
+    //     }
+    //     return $dividend / $divisor;
+    //     }
+
+    //     try {
+    //     echo divide(5, 0);
+    //     } finally {
+    //     echo "Process complete.";
+    //     }
+
+    //スローされた例外に関する情報を出力する
+    function divide($dividend, $divisor) {
+    if($divisor == 0) {
+        throw new Exception("Division by zero", 1);
     }
-    echo "<br>";
-    if (!isset($_COOKIE[$cookie_name])) {
-        echo "Coookie named '" . $cookie_name . "'is not set!";
-    } else {
-        echo "Coookie '" . $cookie_name . "' is set!<br>";
-        echo "value is: " . $_COOKIE[$cookie_name];
+    return $dividend;
+    }
+
+    try {
+    echo divide(5, 0);
+    } catch(Exception $ex) {
+    $code = $ex->getCode();
+    $message = $ex->getMessage();
+    $file = $ex->getFile();
+    $line = $ex->getLine();
+    echo "Exception thrown in $file on line $line: [Code $code] $message";
     }
     ?>
+  <!-- PHPフィルター
+    データの検証 = データが適切な形式であるかどうかを判断します。
+    データのサニタイズ = データから不正な文字を削除します。 -->
+  <!-- <table>
+    <tr>
+      <td>Filter Name</td>
+      <td>Filter ID</td>
+    </tr> -->
+  <?php
+        // foreach (filter_list() as $id => $filter) {
+        //     echo '<tr><td>' . $filter . '</td><td>' . filter_id($filter) . '</td></tr>';
+        // }
+        // このfilter_var()関数は、データの検証とサニタイズの両方を行います。
+        // このfilter_var()関数は、指定されたフィルターで単一の変数をフィルター処理します。次の 2 つのデータが必要です。
+        // $str = "<h1>Hello World!</h1>";
+        // $newstr = filter_var($str, FILTER_SANITIZE_STRING);
+        // echo $newstr;
+        // echo "<br>";
+        // // $intが整数の場合は"Integer is vaild"が表示
+        // $int = 100;
+        // if (!filter_var($int, FILTER_VALIDATE_INT) === false) {
+        //     echo ("Integer is vaild");
+        // } else {
+        //     echo ("Integer is not valid");
+        // }
+        // echo "<br>";
+        // // ↑で0が設定されている場合はこっちにする
+        // $int = 0;
+        // if (filter_var($int, FILTER_VALIDATE_INT) === 0 || !filter_var($int, FILTER_VALIDATE_INT) === false) {
+        //     echo("Integer is valid");
+        // } else {
+        //     echo ("Integer is not valid");
+        // }
+        // echo "<br>";
+        // //filter_varで有効なIPアドレスを検証する
+        // $ip = "127.0.0.1";
+        // if (!filter_var($ip, FILTER_VALIDATE_IP) === false) {
+        //     echo ("$ip is a valid IP address");
+        // } else {
+        //     echo("$ip is not a valid address");
+        // }
+        // echo"<br>";
+        // //filter_varでメールアドレスのサニタイズと検証
+        // $email = "john.doe@example.com";
+        // //メールから不正な文字を削除する
+        // $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        // //メールのバリデート
+        // if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+        //     echo("$email is a valid email address");
+        // } else {
+        //     echo("$email is not a valid email address");
+        // }
+        // echo "<br>";
+        // //filter_varでURLのサニタイズと検証
+        // $url = "https://www.w3schools.com";
+
+        // //URLから不正な文字を削除する
+        // $url = filter_var($url, FILTER_SANITIZE_URL);
+
+        // //URLのバリデート
+        // if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
+        // echo("$url is a valid URL");
+        // } else {
+        // echo("$url is not a valid URL");
+        // }
+        ?>
+  </table>
 </body>
 </html>
